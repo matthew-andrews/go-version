@@ -222,5 +222,8 @@ func TestVersionString(t *testing.T) {
 		if actual != expected {
 			t.Fatalf("expected: %s\nactual: %s", expected, actual)
 		}
+		if v.Raw() != tc[0] {
+			t.Fatalf("v.Raw() must expose original version - expected: %s\nactual: %s", tc[0], v.Raw())
+		}
 	}
 }

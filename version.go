@@ -25,6 +25,7 @@ type Version struct {
 	pre      string
 	segments []int
 	si       int
+	raw      string
 }
 
 func init() {
@@ -64,6 +65,7 @@ func NewVersion(v string) (*Version, error) {
 		pre:      matches[4],
 		segments: segments,
 		si:       si,
+		raw:      v,
 	}, nil
 }
 
@@ -292,4 +294,9 @@ func (v *Version) String() string {
 	}
 
 	return buf.String()
+}
+
+// Raw returns the original version string provided at instantiation
+func (v Version) Raw() string {
+	return v.raw
 }
